@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <link rel='stylesheet'  href="css/chat.css"/>
+</head>
+<body>
+
+<div class ="description">
+<p>Для простоты вместо авторизации в чат есть поле Name</p>
+<p>Чтобы залогиниться под пользхователем, надо ввести уникальное имя в поле Name и нажать Login</p>
+<p>Аналогично Logout</p>
+<p>Чтобы отправить в чат сообщение, надо чтобы поле Тфьу было не пустое, вписать текст в поле message и нажать write </p>
+<div>
+
+<div id="chatApp">
+
+    <div class="actions block">
+         <div class="sub_actions">
+            <input v-model="personName" placeholder="Name">
+            <button v-on:click="login">Login</button>
+            <button v-on:click="logout">Logout</button>
+        </div>
+        <div class="sub_actions write_message_action">
+            <input v-model="message" placeholder="message" class="new_message">
+            <button v-on:click="writeMessage">write</button>
+        </div>
+    </div>
+
+    <div class = "chat block">
+         <div class="chatStatus"><span>{{chatStatus}}</span></div>
+         <textarea title="Body of Chat" readonly>{{chatBody}}</textarea>
+    </div>
+
+    <div class="actors block">
+        <ul  id="actorStatuses">
+            <li v-for="actor in actorStatuses">
+                <span class="name">{{actor.name}}</span>
+                <span class="status">{{actor.status}}</span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<script src="js/chat.js"></script>
+</body>
+</html>
